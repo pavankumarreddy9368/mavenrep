@@ -7,9 +7,9 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/pavankumarreddy9368/mavenrep.git']]])
             }
         }
-        stage('CLOUD') {
+        stage('build') {
             steps {
-                echo 'Testing..'
+               bat 'mvn package'
             }
         }
         stage('INFRA') {
