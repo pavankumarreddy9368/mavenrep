@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('DEVOPS') {
+        stage('codecheckout') {
             steps {
-                echo 'Building..'
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/pavankumarreddy9368/mavenrep.git']]])
             }
         }
         stage('CLOUD') {
